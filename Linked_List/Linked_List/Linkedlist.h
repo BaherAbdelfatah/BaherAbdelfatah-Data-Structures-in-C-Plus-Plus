@@ -16,6 +16,10 @@ public:
 	bool is_empty();
 	int list_size();
 	void insert(int data, int pos);
+	void reverse();
 	void print();
+	Node * get_head();
+	void clear_list();
+	void recursion_reverse(Node * node);
 };
 

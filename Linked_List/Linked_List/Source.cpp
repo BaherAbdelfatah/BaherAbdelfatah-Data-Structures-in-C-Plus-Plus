@@ -2,6 +2,22 @@
 #include "Linkedlist.h"
 using namespace std;
 
+void recursion_print(Node * node)
+{
+	if(node == NULL)
+		return;
+	cout<<node->data<<endl;
+	recursion_print(node->next);
+}
+
+void reverse_print(Node * node)
+{
+	if(node == NULL)
+		return;
+	reverse_print(node->next);
+	cout<<node->data<<endl;
+}
+
 int main()
 {
 	Linkedlist list;
@@ -13,6 +29,11 @@ int main()
 	list.insert(4,3);    // 1 2 3 4 5 6
 	list.remove(6);
 	list.print();
-    
+	list.reverse();
+	cout<<endl;
+	list.print();
+	Node * head = list.get_head();
+	cout<<endl;
+	reverse_print(head);
 	return 0;
 }
