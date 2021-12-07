@@ -144,6 +144,56 @@ int Linkedlist::list_size()
 	return size;
 }
 
+void Linkedlist::reverse()
+{
+	Node * curr = head;
+	Node * next = NULL;
+	Node * prev = NULL;
+
+	while(curr != NULL)
+	{
+		next = curr -> next;
+		curr -> next = prev;
+		prev = curr;
+		curr = next;
+	}
+
+	head = prev;
+}
+
+Node * Linkedlist::get_head()
+{
+	return head;
+}
+
+void Linkedlist::recursion_reverse(Node * node)
+{
+	if(node->next == NULL)
+	{
+		head = node;
+		return;
+	}
+	recursion_reverse(node->next);
+	Node * temp = node->next;
+	temp->next = node;
+	node->next = NULL;
+}
+
+void Linkedlist::clear_list()
+{
+	Node * curr = head;
+	Node * next = NULL;
+	
+	while(curr != NULL)
+	{
+		next = curr->next;
+		free(curr);
+		curr = next;
+	}
+	size = 0;
+	head = NULL;
+}
+
 Linkedlist::~Linkedlist(void)
 {
 }
